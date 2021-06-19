@@ -1,0 +1,113 @@
+html {
+  font-size: 65.2%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ________ form ________ */
+
+.form-container {
+  width: 100%;
+  max-width: 60rem;
+  margin-top: 8rem;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-label {
+  width: 80%;
+  max-width: 40rem;
+}
+
+.input-field,
+.submit-btn {
+  width: 80%;
+  max-width: 40rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.submit-btn {
+  text-transform: uppercase;
+  background-color: darkred;
+  color: #fff;
+}
+
+/* ________ Weather Entries ________ */
+
+.entry {
+  padding: 1rem 2rem;
+  background-color: #ddd;
+  margin: 2rem 2rem;
+}
+
+.entry-heading {
+  margin-bottom: 2rem;
+}
+
+.content-heading {
+  margin-bottom: 0.2rem;
+  margin-top: 0.8rem;
+  color: #444;
+  text-decoration: underline;
+}
+
+.entry-data {
+  font-size: 1.9rem;
+  color: green;
+}
+
+/* ________ History ________ */
+
+.history-section {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.history-container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.history-heading {
+  text-align: center;
+}
+
+/* ________ Utils ________ */
+
+.hidden {
+  display: none;
+}

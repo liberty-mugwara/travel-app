@@ -1,0 +1,27 @@
+{
+  "name": "travel-app",
+  "version": "1.0.0",
+  "description": "Obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liberty-mugwara/travel-app.git"
+  },
+  "keywords": [
+    "travel"
+  ],
+  "author": "Liberty Mugwara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liberty-mugwara/travel-app/issues"
+  },
+  "homepage": "https://github.com/liberty-mugwara/travel-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Weather Journal</title>
+  </head>
+  <body>
+    <main class="main">
+      <section class="form-container">
+        <h1 class="form-title">Weather Journal</h1>
+        <form class="weather-form">
+          <label class="input-label" for="zip">Zip code:</label>
+          <input
+            type="text"
+            class="input-field"
+            placeholder="Enter zip code here"
+            name="zip"
+            id="zip"
+          />
+          <label class="input-label" for="feelings">Feelings:</label>
+          <textarea
+            id="feelings"
+            class="input-field"
+            name="feelings"
+            placeholder="How are you feeling today?"
+          ></textarea>
+          <button class="submit-btn" type="submit" id="generate">
+            Generate
+          </button>
+        </form>
+      </section>
+
+      <div class="entry hidden" id="entryHolder">
+        <h2 class="entry-heading" id="entry-heading"></h2>
+        <div id="date"></div>
+        <div id="temp"></div>
+        <div id="content">
+          <h3 class="content-heading" id="content-heading"></h3>
+          <div id="content-data"></div>
+        </div>
+      </div>
+
+      <section class="history-section">
+        <h2 class="history-heading hidden" id="history-heading">History</h2>
+        <div class="history-container"></div>
+      </section>
+    </main>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
