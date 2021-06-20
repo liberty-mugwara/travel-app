@@ -70,10 +70,10 @@ This app requires [nodeJS >= 16.0.0](https://nodejs.org/en/download/current/) an
 1. Get Weatherbit API Key [here](https://www.weatherbit.io/account/dashboard)
 2. Get Pixabay API key
 
-   > To get the API key click [here](https://pixabay.com/api/docs/) and follow below instructions:
+   To get the API key click [here](https://pixabay.com/api/docs/) and follow below instructions:
 
-   - On the API documentation page scroll down.
-   - Under Parameters you will find the first parameter named "Key". Select and copy the key inside the green box next to Your API Key.
+   > - On the API documentation page scroll down.
+   > - Under Parameters you will find the first parameter named "Key". Select and copy the key inside the green box next to Your API Key.
 
    > [![Pixabay API Key screenshot][pixabay-screenshot]](#installation)
 
