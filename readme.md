@@ -174,9 +174,9 @@ Here is a list of articles and repos that provided me with information when writ
 
 <!-- MARKDOWN Links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/liberty-mugwara/travel-app.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/liberty-mugwara/travel-app.svg?style=flat-square
 [contributors-url]: https://github.com/liberty-mugwara/travel-app/graphs/contributors
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [highlightjs-supported-lang-url]: https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md
 [syntax-highlighting-faq-url]: https://meta.stackexchange.com/questions/184108/what-is-syntax-highlighting-and-how-does-it-work
 [linkedin-url]: https://linkedin.com/in/liberty-mugwara
