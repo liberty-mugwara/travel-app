@@ -95,7 +95,7 @@ This app requires [nodeJS >= 16.0.0](https://nodejs.org/en/download/current/) an
 
 5. Enter your api in `.env`
 
-```ini
+```sh
 # replace the values in square brackets with your own respective values
 GEONAMES_USERNAME=[username]
 WEATHERBIT_KEY=[your_key]
@@ -169,16 +169,16 @@ The following READMEs gave me a general idea of how to write this README:
 
 Here is a list of articles and repos that provided me with information when writing this README
 
-- [Highlight.js Supported Languages][highlightjs-supported-lang-url]
-- [Syntax Highlighting FAQs][syntax-highlighting-faq-url]
+- [Github Syntax Highlighting Docs][syntax-highlighting-docs]
+- [Syntax Highlight Supported Languages][syntax-highlight-supported-lang-url]
 
 <!-- MARKDOWN Links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/liberty-mugwara/travel-app.svg?style=flat-square
 [contributors-url]: https://github.com/liberty-mugwara/travel-app/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[highlightjs-supported-lang-url]: https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md
-[syntax-highlighting-faq-url]: https://meta.stackexchange.com/questions/184108/what-is-syntax-highlighting-and-how-does-it-work
+[syntax-highlight-supported-lang-url]: https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+[syntax-highlighting-docs]: https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks
 [linkedin-url]: https://linkedin.com/in/liberty-mugwara
 [product-screenshot]: src/assets/project.png
 [pixabay-screenshot]: src/assets/pixabay-api-key.png
