@@ -1,16 +1,17 @@
-const express = require("express");
-const cors = require("cors");
-// No need to add the body-parser package I am using express > 4.16.0
+import express, {
+  json as expressJson,
+  urlencoded as expressUrlencoded,
+} from "express";
+import cors from "cors";
+import chalk from "chalk";
 
 const app = express();
-app.use(express.static("src/client"));
-app.use(cors());
-
-// Please don't punish me here
-// body parser has been re-added under the methods express.json() and express.urlencoded().
-// I am using express > 4.16.0
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors(),
+  express.static("dist"),
+  expressJson(),
+  expressUrlencoded({ extended: false })
+);
 
 // API endpoint
 const projectData = [];
@@ -28,5 +29,13 @@ function addWeather(req, res) {
 }
 
 // starting server
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`App is running at port: ${port}`));
+const port = process.env.PORT || 8080;
+app.listen(port, () =>
+  console.log(
+    chalk.green(
+      `Server ${chalk.red(
+        "(" + chalk.yellow("API") + ")"
+      )} is running at port: ${chalk.yellowBright(port.toString())}`
+    )
+  )
+);
