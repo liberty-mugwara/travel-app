@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
-const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/client/index.js",
@@ -11,7 +10,7 @@ module.exports = {
 
   output: {
     filename: "bundle.js",
-    path: path.resolve("dist"),
+    path: path.resolve("dist/client"),
     library: {
       name: "Client",
       type: "umd",
@@ -53,7 +52,6 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
     }),
-    new WorkboxPlugin.GenerateSW(),
   ],
 
   devServer: {

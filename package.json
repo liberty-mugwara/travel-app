@@ -24,11 +24,11 @@
     "npm": "7.x"
   },
   "scripts": {
-    "start": "node server-dist/index.js",
+    "start": "node dist/server/index.js",
     "build": "npm run build-client-prod & npm run build-server",
     "dev": "concurrently 'npm:build-client-dev' 'npm:server-dev' -c 'magenta.bold,green.bold' -r true",
     "server-dev": "nodemon",
-    "build-server": "babel src/server -d server-dist",
+    "build-server": "babel src/server -d dist/server",
     "build-client-prod": "webpack --config webpack.prod.js --progress",
     "build-client-dev": "webpack serve  --config webpack.dev.js --progress",
     "test": "jest"

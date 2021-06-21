@@ -10,7 +10,7 @@ module.exports = {
   mode: "production",
   output: {
     filename: "bundle.js",
-    path: path.resolve("dist"),
+    path: path.resolve("dist/client"),
     library: {
       type: "var",
       name: "Client",

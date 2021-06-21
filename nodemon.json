@@ -4,5 +4,5 @@
     ],
     "ext": ".js,.mjs,.cjs",
     "ignore": [],
-    "exec": "npm run build-server & node ./server-dist/index.js"
+    "exec": "npm run build-server & npm run start"
 }
