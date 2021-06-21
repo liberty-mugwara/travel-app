@@ -106,23 +106,29 @@ PIXABAY_KEY=[your_key]
 
 #### Dev Mode
 
-1. In one terminal run the following command
+- To run both client dev server and API server at once
+  ```sh
+  npm run dev
+  ```
+- Alternatively you can run the servers separately
 
-   ```sh
-   npm run build-dev
-   ```
+  1.  In one terminal run the following command
 
-2. Open another terminal and run the following command
-   ```sh
-   npm run build-dev
-   ```
+      ```sh
+      npm run build-client-dev
+      ```
+
+  2.  Open another terminal and run the following command
+      ```sh
+      npm run serve-dev
+      ```
 
 #### Production mode
 
 run the following command:
 
 ```sh
-npm run build-prod
+npm run build
 npm run start
 ```
 
@@ -165,7 +171,7 @@ Project Link: [travel app](https://github.com/liberty-mugwara/travel-app)
 The following READMEs gave me a general idea of how to write this README:
 
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template/master/README.md)
-- [Axios](https://github.com/axios/axios/blob/master/README.md)
+- [Axios README](https://github.com/axios/axios/blob/master/README.md)
 
 Here is a list of articles and repos that provided me with information when writing this README
 
