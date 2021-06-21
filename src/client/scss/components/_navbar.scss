@@ -1,0 +1,99 @@
+/* Top navigation bar */
+.navbar {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $color-primary;
+  color: $color-white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  row-gap: 0.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &__brand,
+  &__link {
+    color: $color-white;
+    line-height: 1.4;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &__brand {
+    font-family: "Oswald", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: auto;
+
+    @media (min-width: 400px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    position: relative;
+    display: none;
+
+    @media (min-width: 812px) {
+      display: inline-block;
+    }
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: $color-secondary;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: transform 0.4s;
+      transform: scaleX(0);
+      transform-origin: center;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+
+    &--button {
+      margin: 0 2rem 0 1rem;
+      padding: 0.5rem 2rem;
+      border: 2px solid $color-secondary;
+      font-weight: 500;
+      color: $color-secondary;
+      text-transform: uppercase;
+      position: relative;
+      cursor: pointer;
+      z-index: 1;
+      text-decoration: none;
+
+      &:hover {
+        color: #000;
+
+        &::after {
+          transform-origin: left;
+          transform: scaleX(1);
+        }
+      }
+
+      /* for the hover effect */
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-secondary;
+        z-index: -1;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.4s;
+      }
+    }
+  }
+}
