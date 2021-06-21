@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "src/server"
+    ],
+    "ext": ".js,.mjs,.cjs",
+    "ignore": [],
+    "exec": "npm run build-server & node ./server-dist/index.js"
+}
