@@ -170,7 +170,7 @@ Project Link: [travel app](https://github.com/liberty-mugwara/travel-app)
 
 The following READMEs gave me a general idea of how to write this README:
 
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/master/README.md)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
 - [Axios README](https://github.com/axios/axios/blob/master/README.md)
 
 Here is a list of articles and repos that provided me with information when writing this README
