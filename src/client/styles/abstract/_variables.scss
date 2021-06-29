@@ -1,5 +1,18 @@
 // colors
-$color-primary: #0b0c10;
-$color-secondary: #00fcff;
-$color-white: #fff;
-$color-gray: #ddd;
+$colors: (
+  primary: #0b0c10,
+  secondary: #00fcff,
+  tertiary: #61d613,
+  white: #fff,
+  gray: #ddd,
+  black: #000,
+);
+
+$units: (
+  "xs": 0.5rem,
+  "sm": 0.75rem,
+  "base": 1rem,
+  "md": 1.5rem,
+  "lg": 2rem,
+  "xl": 2.5rem,
+);

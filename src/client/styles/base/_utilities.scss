@@ -1,0 +1,79 @@
+// bg colors
+@each $name, $value in $colors {
+  .bg-#{"" + $name} {
+    background-color: $value;
+  }
+}
+
+// text colors
+@each $name, $value in $colors {
+  .text-#{"" + $name} {
+    color: $value;
+  }
+}
+
+// margins
+@each $name, $value in $units {
+  .m-#{$name} {
+    margin: $value;
+  }
+
+  .mt-#{$name} {
+    margin-top: $value;
+  }
+
+  .ml-#{$name} {
+    margin-left: $value;
+  }
+
+  .mb-#{$name} {
+    margin-bottom: $value;
+  }
+
+  .mr-#{$name} {
+    margin-right: $value;
+  }
+
+  .mx-#{$name} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+
+  .my-#{$name} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+}
+
+// paddings
+@each $name, $value in $units {
+  .p-#{$name} {
+    padding: $value;
+  }
+
+  .pt-#{$name} {
+    padding-top: $value;
+  }
+
+  .pl-#{$name} {
+    padding-left: $value;
+  }
+
+  .pb-#{$name} {
+    padding-bottom: $value;
+  }
+
+  .pr-#{$name} {
+    padding-right: $value;
+  }
+
+  .px-#{$name} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+
+  .py-#{$name} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}

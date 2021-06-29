@@ -1,9 +1,12 @@
 .main-header {
   @include flex-col-center;
+  background-size: cover;
+  background-position: top;
 
   &__headings {
     @include flex-col-center;
     text-transform: uppercase;
+    color: color(white);
 
     .heading--main {
       animation: moveInLeft 1s ease-in;
@@ -13,7 +16,6 @@
       font-size: 1.45rem;
       letter-spacing: 0.15rem;
       padding-left: 0.9rem;
-      color: #333;
       animation: moveInRight 1s ease-out;
 
       @media (min-width: 321px) {
