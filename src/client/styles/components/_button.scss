@@ -1,0 +1,21 @@
+.button {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border-width: 0;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 2rem color(black, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 0.5rem 1rem color(black, 0.2);
+  }
+
+  &--animated {
+    animation: moveInBottom 1s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
