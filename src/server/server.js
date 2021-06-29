@@ -8,7 +8,7 @@ import chalk from "chalk";
 const app = express();
 app.use(
   cors(),
-  express.static("dist"),
+  express.static("dist/client"),
   expressJson(),
   expressUrlencoded({ extended: false })
 );
@@ -29,7 +29,7 @@ function addWeather(req, res) {
 }
 
 // starting server
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 app.listen(port, () =>
   console.log(
     chalk.green(

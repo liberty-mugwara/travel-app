@@ -2,7 +2,7 @@
   "name": "travel-app",
   "version": "1.0.0",
   "description": "Obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.",
-  "main": "src/server/index.js",
+  "main": "src/server/server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liberty-mugwara/travel-app.git"
@@ -24,7 +24,7 @@
     "npm": "7.x"
   },
   "scripts": {
-    "start": "node dist/server/index.js",
+    "start": "node dist/server/server.js",
     "build": "npm run build-client-prod & npm run build-server",
     "dev": "concurrently 'npm:build-client-dev' 'npm:server-dev' -c 'magenta.bold,green.bold' -r true",
     "server-dev": "nodemon",

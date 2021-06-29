@@ -1,0 +1,39 @@
+.heading {
+  line-height: 1;
+
+  &--main {
+    font-size: 3rem;
+    font-weight: 500;
+
+    @media (min-width: 321px) {
+      font-size: 3.5rem;
+    }
+
+    @media (min-width: 500px) {
+      font-size: 4.5rem;
+    }
+    @media (min-width: 800px) {
+      font-size: 6rem;
+    }
+  }
+  &--sub {
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    @media (min-width: 330px) {
+      font-size: 1.8rem;
+    }
+
+    @media (min-width: 500px) {
+      font-size: 2.3rem;
+    }
+    @media (min-width: 800px) {
+      font-size: 3.8rem;
+    }
+  }
+
+  &--small {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+}
