@@ -1,4 +1,4 @@
-import { updateMyTrip } from "../js/app";
+import { updateMyTrip } from "../js/updateMyTrip";
 
 test("myTrip updates correctly", () => {
   const testData = {
@@ -10,9 +10,20 @@ test("myTrip updates correctly", () => {
       temp: "56",
       description: "78",
     },
-    imageUrl: travelImageDefault,
+    imageUrl: "yes.png",
   };
-  const myTrip = updateMyTrip(testData);
+  let oldData = {
+    cityName: "City Name",
+    countryName: "Country Name",
+    departure: "Date of departure",
+    weather: {
+      app_temp: "Temperature",
+      temp: "Temperature",
+      description: "Weather description",
+    },
+    imageUrl: "test.png",
+  };
+  const myTrip = updateMyTrip(oldData, testData);
   let correct = true;
   Object.keys(myTrip).forEach((key) => {
     if (typeof myTrip[key] !== "object") {

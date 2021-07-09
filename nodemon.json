@@ -3,6 +3,6 @@
         "src/server"
     ],
     "ext": ".js,.mjs,.cjs",
-    "ignore": [],
+    "ignore": ["__tests__"],
     "exec": "npm run build-server & npm run start"
 }
