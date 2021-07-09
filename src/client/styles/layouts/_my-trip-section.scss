@@ -1,0 +1,9 @@
+.my-trip-section {
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
+
+  @media (max-width: 799px) {
+    flex-direction: column;
+  }
+}
