@@ -12,9 +12,12 @@
 // components
 @import "components/navbar";
 @import "components/button";
+@import "components/form";
 
 // layouts
 @import "layouts/header";
+@import "layouts/flex";
+// @import "layouts/my-trip-section";
 
 // pages
 @import "pages/main";

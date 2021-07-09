@@ -1,0 +1,21 @@
+.form {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+
+  input {
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem auto;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+}
