@@ -3,7 +3,7 @@ import { navbar, heading, button } from "../components";
 import headerBg from "../../img/header.jpg";
 
 export const header = () => {
-  const headerEl = document.querySelector("header");
+  const headerEl = document.querySelector("#main-header");
   headerEl.style.backgroundImage = `linear-gradient(
     to right bottom,
     rgba(214, 19, 97, 0.7),
