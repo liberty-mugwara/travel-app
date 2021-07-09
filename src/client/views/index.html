@@ -20,7 +20,7 @@
           class="flex flex-column flex-center py-xl"
         >
           <h3 class="heading--sub uppercase mt-lg">Add a new trip</h3>
-          <form class="form" onsubmit="return Client.addEvent(event)">
+          <form class="form" onsubmit="return Client.addTripHandler(event)">
             <label for="location">My trip to:</label>
             <input
               id="location"
@@ -46,23 +46,48 @@
           </form>
         </section>
 
-        <section id="my-trip" class="my-trip py-xl px-md bg-gray-light flex">
-          <figure class="w-50">
-            <img src="" alt="city image" />
-            <figcaption>The image of trip destination</figcaption>
-          </figure>
-          <section class="w-50">
+        <section
+          id="my-trip"
+          class="my-trip-section py-xl px-md bg-gray-light flex"
+        >
+          <div class="my-trip-section__image">
+            <figure>
+              <img class="w-100" id="trip-location-image" alt="city image" />
+              <figcaption>
+                The image of trip destination. Images are from
+                <a
+                  href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp"
+                  >Pixabay</a
+                >
+              </figcaption>
+            </figure>
+          </div>
+          <section class="my-trip-section__details">
             <div>
-              <h4>My trip to: <span id="trip-destination"></span></h4>
-              <h5>Departing: <span id="trip-departure"></span></h5>
+              <h4 class="heading--sub">
+                My trip to: <span id="trip-destination"></span>
+              </h4>
+              <h5 class="heading--sub">
+                Departing: <span id="trip-departure"></span>
+              </h5>
             </div>
             <div class="flex py-lg">
-              <button class="button bg-secondary mr-md">save trip</button>
-              <button class="button bg-gray">remove-trip</button>
+              <button
+                onclick="return Client.saveTrip()"
+                class="button bg-secondary mr-md"
+              >
+                save
+              </button>
+              <button
+                onclick="return Client.removeTrip()"
+                class="button bg-gray"
+              >
+                remove
+              </button>
             </div>
             <div>
-              <p>distance is 200km from now</p>
-              <p>weather</p>
+              <p id="trip-temp" class="py-sm"></p>
+              <p id="trip-weather" class="py-sm"></p>
             </div>
           </section>
         </section>

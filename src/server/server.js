@@ -1,9 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express, {
   json as expressJson,
   urlencoded as expressUrlencoded,
 } from "express";
 import cors from "cors";
 import chalk from "chalk";
+import tripRoutes from "./routes/trips";
 
 const app = express();
 app.use(
@@ -14,19 +18,10 @@ app.use(
 );
 
 // API endpoint
-const projectData = [];
+// const projectData = [];
 
 // Router
-app.get("/weather", (req, res) => {
-  res.json(projectData);
-});
-
-app.post("/weather", addWeather);
-
-function addWeather(req, res) {
-  projectData.push(req.body);
-  res.end();
-}
+app.use("/add-trip/", tripRoutes);
 
 // starting server
 const port = process.env.PORT || 8081;

@@ -3,7 +3,7 @@ import { navbar, heading, button } from "../components";
 import headerBg from "../../img/header.jpg";
 
 export const header = () => {
-  const headerEl = document.querySelector("#main-header");
+  const headerEl = document.querySelector("header");
   headerEl.style.backgroundImage = `linear-gradient(
     to right bottom,
     rgba(214, 19, 97, 0.7),
@@ -45,9 +45,6 @@ export const header = () => {
     button("Create Trip", {
       className: "mt-lg",
       animated: true,
-      attributes: {
-        onclick: "return Client.scrollToAddTrip()",
-      },
     })
   );
   headerEl.append(fragment);

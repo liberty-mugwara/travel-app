@@ -1,9 +1,22 @@
 .my-trip-section {
   @media (min-width: 800px) {
     flex-direction: row;
+    &__image,
+    &__details {
+      width: 50%;
+    }
   }
 
   @media (max-width: 799px) {
     flex-direction: column;
+    &__image,
+    &__details {
+      width: 100%;
+    }
+  }
+
+  &__image,
+  &__details {
+    padding: 1rem;
   }
 }

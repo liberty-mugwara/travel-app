@@ -1,15 +1,107 @@
 import { setLayouts } from "./helpers";
+import travelImageDefault from "../img/default-travel.jpg";
+import axios from "axios";
 // layouts
 import { header } from "./layouts";
 
+const apiUrl = "http://localhost:8081";
+
+// global variables
+const tripLocationImage = document.getElementById("trip-location-image");
+const tripDestination = document.getElementById("trip-destination");
+const tripDeparture = document.getElementById("trip-departure");
+const tripTemp = document.getElementById("trip-temp");
+const tripWeather = document.getElementById("trip-weather");
+
+// saved trip json data
+const savedTripJson = localStorage.getItem("trip");
+
+let myTrip = {
+  cityName: "City Name",
+  countryName: "Country Name",
+  departure: "Date of departure",
+  weather: {
+    app_temp: "Temperature",
+    temp: "Temperature",
+    description: "Weather description",
+  },
+  imageUrl: travelImageDefault,
+};
+
+// use saved data if available
+if (savedTripJson) {
+  myTrip = JSON.parse(savedTripJson);
+}
+
 // set layouts
 setLayouts(header);
+setTripUI(myTrip);
 
-// const apiKey = "edc2c502f33ce0c763912ef65f7a3404";
-// const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
-// const submit = document.getElementById("generate");
-// const entryEl = document.getElementById("entryHolder");
-// const historyHeadingEl = document.getElementById("history-heading");
+export const addTripHandler = async (event) => {
+  try {
+    event.preventDefault();
+    const location = document.getElementById("location").value;
+    const date = document.getElementById("date").value;
+    const message = `${!date ? "Departure date is required" : ""}\n ${
+      !location ? "location is required" : ""
+    }`;
+
+    if (!location || !date) {
+      return alert(message);
+    }
+
+    const { data } = await axios.get(
+      `${apiUrl}/add-trip/${location}/date/${date}`
+    );
+    // update trip data
+    updateMyTrip(data);
+    // set ui
+    setTripUI(data);
+  } catch (err) {
+    alert("an error occurred");
+  }
+};
+
+export const scrollToAddTrip = () => {
+  const addTripSection = document.getElementById("add-trip-section");
+  addTripSection.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+
+export const saveTrip = () => {
+  localStorage.setItem("trip", JSON.stringify(myTrip));
+  alert(`saved trip to ${myTrip.countryName}/${myTrip.cityName}`);
+};
+
+export const updateMyTrip = (data) => {
+  myTrip = data;
+  return myTrip;
+};
+
+export const removeTrip = () => {
+  const trip = localStorage.getItem("trip");
+  if (trip) {
+    localStorage.removeItem("trip");
+    const data = JSON.parse(trip);
+    return alert(`removed trip to ${data.countryName}/${data.cityName}`);
+  }
+  alert("Nothing to remove");
+};
+
+function setTripUI({
+  imageUrl,
+  cityName,
+  countryName,
+  weather,
+  departure,
+} = {}) {
+  tripLocationImage.setAttribute("src", imageUrl || travelImageDefault);
+  tripDestination.textContent = `${countryName}/${cityName}`;
+  tripDeparture.textContent = departure;
+  tripTemp.innerHTML = `Typical weather for then is:<br> 
+    <strong>Temperature:</strong> ${weather.temp}, <strong>Feels like:</strong> ${weather.app_temp}
+    `;
+  tripWeather.textContent = weather.description;
+}
 
 // // allows us to correctly load history
 // let fetchedFromApi = false;

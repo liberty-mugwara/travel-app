@@ -6,12 +6,12 @@
 
   &:hover {
     transform: translateY(-0.1rem);
-    box-shadow: 0 1rem 2rem color(black, 0.2);
+    box-shadow: 0 1rem 2rem color(black, 0.1);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 0.5rem 1rem color(black, 0.2);
+    box-shadow: 0 0.5rem 1rem color(black, 0.1);
   }
 
   &--animated {
