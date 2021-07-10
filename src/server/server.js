@@ -8,7 +8,6 @@ import express, {
 } from "express";
 import cors from "cors";
 import chalk from "chalk";
-import tripRoutes from "./routes/trips";
 
 const app = express();
 app.use(
