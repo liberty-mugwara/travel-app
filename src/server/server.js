@@ -22,9 +22,10 @@ app.use(
 const projectData = {};
 
 // Router
-app.get("/add-trip/:location/date/:date", async (req, res) => {
+app.post("/add-trip", async (req, res) => {
   try {
-    const location = req.params.location.toLowerCase();
+    const { location: lcton, date } = req.body;
+    const location = lcton.toLowerCase();
 
     if (projectData[location]) {
       return res.json(projectData[location]);
@@ -42,7 +43,7 @@ app.get("/add-trip/:location/date/:date", async (req, res) => {
       countryName,
       weather,
       imageUrl,
-      departure: req.params.date,
+      departure: date,
     };
 
     res.json({
@@ -50,7 +51,7 @@ app.get("/add-trip/:location/date/:date", async (req, res) => {
       countryName,
       weather,
       imageUrl,
-      departure: req.params.date,
+      departure: date,
     });
   } catch (err) {
     res.status(404).json({ message: "not found" });

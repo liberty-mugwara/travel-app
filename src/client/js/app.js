@@ -50,9 +50,7 @@ export const addTripHandler = async (event) => {
       return alert(message);
     }
 
-    const { data } = await axios.get(
-      `${apiUrl}/add-trip/${location}/date/${date}`
-    );
+    const { data } = await axios.post(`${apiUrl}/add-trip`, { location, date });
     // update trip data
     updateMyTrip(data);
     // set ui
