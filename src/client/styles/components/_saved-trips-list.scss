@@ -1,0 +1,11 @@
+.saved-trips-list {
+  width: 100%;
+  max-width: 80rem;
+  .trips-list-item {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+  }
+}

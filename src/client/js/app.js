@@ -14,7 +14,8 @@ const tripTemp = document.getElementById("trip-temp");
 const tripWeather = document.getElementById("trip-weather");
 
 // saved trip json data
-const savedTripJson = localStorage.getItem("trip");
+const tripsJson = localStorage.getItem("trips");
+let trips = [];
 
 let myTrip = {
   cityName: "City Name",
@@ -29,13 +30,18 @@ let myTrip = {
 };
 
 // use saved data if available
-if (savedTripJson) {
-  myTrip = JSON.parse(savedTripJson);
+if (tripsJson) {
+  const tripsData = JSON.parse(tripsJson);
+  trips = Object.entries(tripsData).map(([key, value]) => value);
+  if (trips.length) {
+    myTrip = trips[0];
+  }
 }
 
 // set layouts
 setLayouts(header);
 setTripUI(myTrip);
+updateTripsListUI();
 
 export const addTripHandler = async (event) => {
   try {
@@ -66,7 +72,18 @@ export const scrollToAddTrip = () => {
 };
 
 export const saveTrip = () => {
-  localStorage.setItem("trip", JSON.stringify(myTrip));
+  const tripsJson = localStorage.getItem("trips");
+  let tripsData = {};
+  if (tripsJson) {
+    tripsData = JSON.parse(tripsJson);
+  } else {
+    localStorage.setItem("trips", JSON.stringify({}));
+  }
+
+  tripsData[myTrip.cityName] = myTrip;
+  trips = Object.entries(tripsData).map(([key, value]) => value);
+  localStorage.setItem("trips", JSON.stringify(tripsData));
+  updateTripsListUI();
   alert(`saved trip to ${myTrip.countryName}/${myTrip.cityName}`);
 };
 
@@ -75,12 +92,30 @@ export const updateMyTrip = (data) => {
   return myTrip;
 };
 
+export const viewTrip = (data) => {
+  console.log(data);
+  updateMyTrip(data);
+  setTripUI(data);
+  const myTripSection = document.getElementById("my-trip");
+  myTripSection.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+
 export const removeTrip = () => {
-  const trip = localStorage.getItem("trip");
-  if (trip) {
-    localStorage.removeItem("trip");
-    const data = JSON.parse(trip);
-    return alert(`removed trip to ${data.countryName}/${data.cityName}`);
+  const tripsJson = localStorage.getItem("trips");
+  let tripsData = {};
+  if (tripsJson) {
+    tripsData = JSON.parse(tripsJson);
+  } else {
+    localStorage.setItem("trips", JSON.stringify({}));
+  }
+
+  if (tripsData[myTrip.cityName]) {
+    delete tripsData[myTrip.cityName];
+    localStorage.setItem("trips", JSON.stringify(tripsData));
+
+    trips = Object.entries(tripsData).map(([key, value]) => value);
+    updateTripsListUI();
+    return alert(`removed trip to ${myTrip.countryName}/${myTrip.cityName}`);
   }
   alert("Nothing to remove");
 };
@@ -101,229 +136,16 @@ function setTripUI({
   tripWeather.textContent = weather.description;
 }
 
-// // allows us to correctly load history
-// let fetchedFromApi = false;
-
-// /* ________ pre page load ________ */
-
-// getProjectData();
-
-// /* ________ utils ________ */
-
-// /**
-//  *
-//  * @param {number} number
-//  * @param {string} unit
-//  * @returns {string}
-//  */
-// const toLocaleString = (number, unit) => {
-//   const a = number.toLocaleString(undefined, { style: "unit", unit });
-//   console.log(a);
-//   return a;
-// };
-
-// /* ________ functions ________ */
-
-// /**
-//  *
-//  * @param {string} baseUrl - api url
-//  * @param {string} key - personal API Key
-//  * @returns {getWeather}
-//  */
-// const generateApiFetch = (baseUrl, key) => {
-//   /**
-//    *
-//    * @param {string} zipCode
-//    * @returns {{name: string,sys: { country: string }, main: { temp:number,
-//    *  humidity:number }, weather: { description: string }[],wind:{speed:number}}}
-//    */
-//   const getWeather = async zipCode => {
-//     const res = await fetch(
-//       baseUrl + `?zip=${zipCode}&appid=${key}&units=metric`
-//     );
-//     try {
-//       const data = await res.json();
-//       fetchedFromApi = true;
-//       return data;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-//   return getWeather;
-// };
-
-// const getWeatherData = generateApiFetch(baseUrl, apiKey);
-
-// async function getProjectData() {
-//   const res = await fetch("/weather");
-//   try {
-//     const data = await res.json();
-//     // update dom elements
-//     updateHistory(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// /**
-//  *
-//  * @param {string} url endpoint url
-//  * @param {{city:string, country:string, temp:number, humidity:number, weather:string,
-//  *  wind:{speed:string}, date:string}} data weather data
-//  * @returns
-//  */
-// const updateWeatherData = async (url, data) => {
-//   return await fetch(url, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(data),
-//   });
-// };
-
-// /**
-//  *
-//  * @param {{ dateEl:HTMLElement, tempEl:HTMLElement, entryHeadingEl:HTMLElement,
-//  *  contentHeadingEl:HTMLElement, contentDataEl:HTMLElement }} entryElements
-//  * @param {{city:string, country:string, temp:number, humidity:number, weather:string,
-//  *  wind:{speed:string}, date:string}} data
-//  */
-// const updateEntry = (entryElements, data) => {
-//   const { city, country, temp, humidity, weather, wind, date } = data || {};
-//   const { dateEl, tempEl, entryHeadingEl, contentHeadingEl, contentDataEl } =
-//     entryElements;
-//   if (entryHeadingEl) {
-//     entryHeadingEl.textContent = country + ": " + city;
-//   }
-//   if (dateEl) {
-//     dateEl.innerHTML = `<strong>Date:</strong> <span class="entry-data">${date}</span>`;
-//   }
-//   if (tempEl) {
-//     tempEl.innerHTML = `<strong>Temperature:</strong> <span class="entry-data">${toLocaleString(
-//       temp,
-//       "celsius"
-//     )}</span>
-//     `;
-//   }
-//   if (contentHeadingEl) {
-//     contentHeadingEl.textContent = "Content";
-//   }
-//   if (contentDataEl) {
-//     contentDataEl.innerHTML = `
-//     <p><strong>Weather:</strong> <span class="entry-data">${weather}</span></p>
-//     <p><strong>Wind speed:</strong> <span class="entry-data">${toLocaleString(
-//       wind.speed,
-//       "kilometer-per-hour"
-//     )}</span></p>
-//     <p><strong>Humidity:</strong> <span class="entry-data">${(
-//       humidity / 100
-//     ).toLocaleString(undefined, {
-//       style: "percent",
-//       minimumFractionDigits: 2,
-//     })}</span></p>
-//     `;
-//   }
-// };
-
-// /**
-//  *
-//  * @param {{city:string, country:string, temp:number, humidity:number, weather:string,
-//  *  wind:{speed:string}, date:string}[]} projectData
-//  */
-// const updateHistory = (projectData = []) => {
-//   const historyContainerEl = document.querySelector(".history-container");
-//   let htmlData = "";
-//   if (projectData.length > 1) {
-//     if (historyHeadingEl.classList.contains("hidden")) {
-//       historyHeadingEl.classList.remove("hidden");
-//     }
-//     projectData.forEach((data, index) => {
-//       // don't add the current entry in history unless all is history
-//       if (fetchedFromApi && index === projectData.length - 1) return;
-//       const entryHolder = `
-//       <div class="entry">
-//         <h2 class="entry-heading">${data.country + ": " + data.city}</h2>
-//         <div class="date">
-//           <strong>Date:</strong> <span class="entry-data">${data.date}</span>
-//         </div>
-//         <div class="temp">
-//           <strong>Temperature:</strong> <span class="entry-data">${toLocaleString(
-//             data.temp,
-//             "celsius"
-//           )}</span>
-//         </div>
-//         <div class="content">
-//           <h3 class="content-heading">Content</h3>
-//           <div class="content-data">
-//             <p>
-//               <strong>Weather:</strong> <span class="entry-data">${
-//                 data.weather
-//               }</span>
-//             </p>
-//             <p>
-//               <strong>Wind speed:</strong> <span class="entry-data">${toLocaleString(
-//                 data.wind.speed,
-//                 "kilometer-per-hour"
-//               )}</span>
-//             </p>
-//             <p>
-//               <strong>Humidity:</strong> <span class="entry-data">${(
-//                 data.humidity / 100
-//               ).toLocaleString(undefined, {
-//                 style: "percent",
-//                 minimumFractionDigits: 2,
-//               })}</span>
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//       `;
-//       htmlData += entryHolder;
-//     });
-
-//     historyContainerEl.innerHTML = htmlData;
-//   }
-// };
-
-// /* ________ EventListeners ________ */
-
-// submit.addEventListener("click", async event => {
-//   event.preventDefault();
-//   const zipCode = document.getElementById("zip").value;
-//   const dateEl = document.getElementById("date");
-//   const tempEl = document.getElementById("temp");
-//   const entryHeadingEl = document.getElementById("entry-heading");
-//   const contentHeadingEl = document.getElementById("content-heading");
-//   const contentDataEl = document.getElementById("content-data");
-
-//   try {
-//     const {
-//       name: city,
-//       sys: { country },
-//       main: { temp, humidity },
-//       weather: [{ description: weather }],
-//       wind,
-//     } = await getWeatherData(zipCode || "");
-
-//     const date = new Date().toLocaleString();
-
-//     const weatherData = { city, country, temp, humidity, weather, wind, date };
-
-//     // prevent too many reflows
-//     if (!entryEl.classList.contains("hidden")) {
-//       entryEl.classList.add("hidden");
-//     }
-
-//     updateEntry(
-//       { dateEl, tempEl, entryHeadingEl, contentHeadingEl, contentDataEl },
-//       weatherData
-//     );
-//     entryEl.classList.remove("hidden");
-
-//     // update api endpoint
-//     const res = await updateWeatherData("weather", weatherData);
-//     if (res.ok) {
-//       // get weather data from api endpoint
-//       await getProjectData();
-//     }
-//   } catch (err) {}
-// });
+function updateTripsListUI() {
+  const tripsList = document.getElementById("trip-list");
+  tripsList.innerHTML = trips.map(
+    (trip) => `<li class="trips-list-item bg-gray mb-sx">
+  <span>${trip.countryName}/${trip.cityName}</span> 
+  <button class="button bg-primary text-white" onclick='return Client.viewTrip(${JSON.stringify(
+    trip
+  )})'>
+              View
+  </button>
+  </li>`
+  );
+}
